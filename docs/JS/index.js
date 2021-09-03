@@ -48,7 +48,7 @@ cover.addEventListener("click", fadingoutanything);
 
 function fadingoutanything() {
 
-  inputSearch.innerHTML = '';
+  inputSearch.innerHTML = '';    //na calculadora funcionou, mais no buscador não
   bars_search.classList.toggle('unshowed')
   cover.classList.toggle('hidden')
   
@@ -56,4 +56,43 @@ function fadingoutanything() {
 
 }
 
-//na calculadora funcionou, mais no buscador não
+//4.- Can I work with API? 
+
+var dica = area_resultados = document.getElementById('consejo');
+advice_button = document.getElementById('boton');
+
+advice_button.addEventListener('click', function(){
+
+  gerarDica()
+
+})
+
+function gerarDica() {
+
+  w3.getHttpObject("https://api.adviceslip.com/advice", function(data) {
+    advice=data.slip.advice
+    area_resultados.innerHTML = "Loading..."
+
+    let h1 = document.createElement('h1');
+    area_resultados.appendChild(h1);
+    dica.innerHTML = advice
+    dica.style.backgroundColor = "red"
+    dica.style.borderRadius = "5px"
+    dica.style.padding = '5px'
+  })
+
+}
+
+/*
+function anexarResultados() {
+
+area_resultados.innerHTML = '...'
+
+
+let h2  = document.createElement('h2')
+p.textContent = titulo
+
+area_resultados.appendchild(p)
+
+
+}*/

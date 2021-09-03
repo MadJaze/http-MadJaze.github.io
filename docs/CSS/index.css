@@ -327,10 +327,16 @@ hr {
     height: 350px;
     margin-bottom: 40px;
 }
+/* API dicas agresivas */
+
+#consejo {
+    margin-top: 20px; 
+}
 
 .cards-banner-two .content2 {
+  
     width: 40%;
-    padding: 90px 0 0 30px;
+    padding: 30px 0 0 30px;
     color: white;
 }
 
