@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+<input type="text" id="a1">
+
+<input type="text" id='a2'>
+
+<input type="button" id="boton">Quiereme</button>
+
+
+<p id="resultado"></p>
+
+<script>
+
+var n1 = document.getElementById('a1');
+var n2 = document.getElementById('a2');
+var btn = document.getElementById('boton');
+
+
+btn.addEventListener('click', multiplica)
+
+function multiplica() {
+
+var paragrafoResultante = document.getElementById('resultado')
+
+    var s1= Number(n1.value);
+    var s2 = Number(n2.value);
+    var res = s1 * s2
+paragrafoResultante.innerHTML = res
+console.log(res)
+}
+
+
+
+
+
+</script>
+
+
+
+
+
+
+</body>
+
+
+
+</html>

@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Requisições HTTP</title>
+<style>
+
+
+form {
+    
+    text-align: center;
+    margin: auto;
+    width: 300px;
+    padding: 10px;
+  
+}
+
+fieldset {
+    
+width: 240px;
+    height: 330px;
+    margin: 20px;
+}
+
+input {
+    outline: none;
+}
+
+
+</style>
+
+
+
+</head>
+
+
+
+
+<body>
+    
+   <form action="">
+    <fieldset>
+    
+        <div>
+    <h1>Fortuine cookie!</h1>
+    <h3>Click below!</h3>
+
+
+            <label for="nome">Nome</label>
+    <input type="text" name='nome' id= 'nome_pesquisa'> <br><br>
+    <label for="email">Email</label>
+    <input type="text" name='email' id= 'email_pesquisa'><br><br>
+
+    <label for="pesquisa">Tira Dica:</label> <br> <br>
+    <input type="text" id = 'termo_de_busca'> <br> <br>
+    <input type="button" id='pesquisa' value = pesquisa>
+   </fieldset>
+        </div>
+    
+<div id="resultados"></div>
+
+<script>
+
+let btn = document.querySelector('#pesquisa')
+let termobusca = document.querySelector('#termo_de_busca')
+let area_resultados = document.querySelector('#resultados')
+
+btn.addEventListener('click', gerardica)
+
+
+function gerardica() {
+    
+area_resultados.innerHTML = '...'
+
+gerando_texto(termo_de_busca.value)
+
+}
+
+
+
+function gerando_texto(termo) { 
+
+    termo = encodeURIComponent(termo)
+
+    fetch('http://openlibrary.org/search.json?q=' + termo)
+    .then(resp => resp.json())
+    .then(dados => anexarResultados(dados.docs))
+
+}
+
+
+
+function anexarResultados(resultados) {
+
+    area_resultados.innerHTML = ""
+    resultados // docs 
+
+    .forEach(resultado => {
+        let titulo = resultado.title
+        let p = document.createElement('p')
+        p.textContent = titulo
+
+        area_resultados.appendChild(p)
+    })
+}
+
+
+/*
+fetch('https://api.adviceslip.com/advice')
+.then(resp => resp.json())
+.then(data =>  console.log(data))   */ 
+    
+
+
+
+
+//regex
+</script>  
+
+
+
+</body>
+</html>

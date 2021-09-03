@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customização do quadro</title>
+<style>
+
+
+body{
+   margin: 0 auto;
+    display: flex; 
+    flex-wrap: wrap;
+    justify-content: space-around;
+    
+}
+
+#root {
+    background: #6401A7;
+    width: 400px;
+ margin: 20px 0px;
+ height: 250px;
+    position: relative;
+    overflow: hidden;
+       
+}
+
+
+.root_circle {
+    border-radius: 50%;
+}
+
+.subject{ 
+    background: red;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    margin: 15px;
+    position: absolute;
+}
+
+#sujeto1 {
+    top: 30%;
+    left: 10%;
+}
+#sujeto2 {
+    top: 30%;
+    left: 37%;
+   
+}
+#sujeto3 {
+    top: 30%;
+    left: 65%;
+}
+
+.rgba {
+  
+    
+    display: flex;
+    flex-wrap: wrap;
+    margin: 20px auto;
+    width: 400px;
+    height: 200px;
+    color: white;
+    
+}
+.rgb {
+    background: black;
+      
+        padding: 10px;
+       
+}
+
+.rgb input {
+    margin: 15px;
+   
+
+}
+
+fieldset{ 
+    border: 2px solid yellow;
+}
+
+form {
+    margin-top: 30px;
+    background: rgb(1, 1, 100);
+    width: 350px;
+  
+    text-align: center;
+    padding: 20px 20px;
+    border-radius: 20px;
+    color: white;
+    
+}
+
+legend {
+    background: dodgerblue;
+    color: yellow;
+    font-weight: 900;
+    padding: 10px;
+    border-radius: 20px;
+    font-size: 20pt;
+}
+
+.title {
+    color: yellow;
+    font-size: 25pt;
+}
+
+
+</style>
+
+
+</head>
+<body>
+
+
+
+
+<div id="root">
+
+
+ <div class="subject" id='sujeto1'></div>
+ <div class="subject" id='sujeto2' ></div>
+ <div class="subject" id='sujeto3'></div>
+
+
+ <input type="range">
+</div>
+
+ 
+
+<form action="">
+    <fieldset><legend>CSS3-no-box</legend>
+
+        <div class="cor">
+        <p class="cores title">Cores</p>
+
+        <input type="radio" name = 'cor' value = 'verde' class = 'color'>
+        <label for="">Verde</label>
+        <input type="radio" name = 'cor' value = 'amarelo' class = 'color'>
+        <label for="">Amarelo</label>
+        <input type="radio" name = 'cor' value = 'azul' class = 'color'>
+        <label for="">Azul</label>
+        <br>
+        <input type="radio" name = 'cor' value ='violeta' class = 'color'>
+        <label for="">Violet</label>
+        <input type="radio" name= 'cor' value = 'vermelho' class = 'color'>
+        <label for="">Vermelho</label>
+      </div>
+
+      <div class="background">
+          <p class="fundo title">Background-color</p>
+      
+        <input type="radio" name = 'corFundo' value='fundoVerde' class = 'color'>
+        <label for="">Verde</label>
+        <input type="radio" name = 'corFundo' value = 'fundoAmarelo' class = 'color'> 
+        <label for="">Amarelo</label>
+        <input type="radio" name = 'corFundo' value = 'fundoAzul' class = 'color'>
+        <label for="">Azul</label> <br>
+        <input type="radio" name='corFundo' value = 'fundoVioleta' class= 'color'>
+        <label for="">Violeta</label>
+        <input type="radio" name = 'corFundo' value = 'fundoVermelho' class= 'color'>
+        <label for="">Vermelho</label>
+      </div>
+      <div class="quantidade">
+          <p class="howMany title">Quantidade de Circulos</p>
+       
+        <input type="radio" name = 'quantidade_circulos' value = 'um' class = 'color'>
+        <label for="">1</label>
+        <input type="radio" name = 'quantidade_circulos' value = 'dos' class = 'color'> 
+        <label for="">2</label>
+        <input type="radio" name = 'quantidade_circulos' value = 'tres' class = 'color'>
+        <label for="">3</label>
+      </div>
+<br>
+        <button type= 'button' id='action'>Customization</button>
+
+        <p class="date"></p>
+    </fieldset>
+</form>
+
+
+
+
+<script> //plato fuerte
+
+var form = document.querySelector('form') 
+
+
+var inputs1 = document.querySelectorAll('.color')
+inputs1.forEach(primeiro => primeiro.addEventListener('click', troca_cor) )
+
+var btn = document.querySelector('#action');
+btn.addEventListener('click', colocar_redondo)
+
+function colocar_redondo() {
+    let raiz = document.querySelector('#root');
+    raiz.classList.toggle('root_circle');
+}
+
+
+function troca_cor() {
+
+    var dados = new FormData(form);
+
+    let sujeto1 = document.querySelector('#sujeto1');
+    let sujeto2 = document.querySelector('#sujeto2');
+    let sujeto3 = document.querySelector('#sujeto3');
+
+    let raiz = document.querySelector('#root');
+
+    var corselecionada = dados.get('cor');
+    var fundoselecionado = dados.get( 'corFundo');
+    var quantidadecirculos = dados.get('quantidade_circulos');
+
+    if (corselecionada == 'verde') {
+        sujeto1.style.backgroundColor = 'green'
+        sujeto2.style.backgroundColor = 'green'
+        sujeto3.style.backgroundColor = 'green'
+    } else if (corselecionada == 'amarelo') {
+        sujeto1.style.backgroundColor = 'yellow'
+        sujeto2.style.backgroundColor = 'yellow'
+        sujeto3.style.backgroundColor = 'yellow'
+    } else if (corselecionada == 'azul') {
+        sujeto1.style.backgroundColor = 'blue'
+        sujeto2.style.backgroundColor = 'blue'
+        sujeto3.style.backgroundColor = 'blue'
+    } else if (corselecionada == 'violeta') {
+        sujeto1.style.backgroundColor = '#6401A7'
+        sujeto2.style.backgroundColor = '#6401A7'
+        sujeto3.style.backgroundColor = '#6401A7'
+    } else if (corselecionada == 'vermelho') {
+        sujeto1.style.backgroundColor = 'red'
+        sujeto2.style.backgroundColor = 'red'
+        sujeto3.style.backgroundColor = 'red'
+    }
+
+    if (fundoselecionado == 'fundoVerde') {
+        raiz.style.backgroundColor = 'green'
+    } else if (fundoselecionado == 'fundoAmarelo') {
+        raiz.style.backgroundColor = 'yellow'
+    } else if (fundoselecionado == 'fundoAzul') {
+        raiz.style.backgroundColor = 'blue'
+    } else if (fundoselecionado == 'fundoVioleta') {
+        raiz.style.backgroundColor = '#6401A7'
+    } else if (fundoselecionado == 'fundoVermelho') {
+        raiz.style.backgroundColor = 'red'
+    }
+
+    if (quantidadecirculos == 'um') {
+        sujeto2.style.display = 'none'
+        sujeto3.style.display = 'none'
+        sujeto1.style.left= '37%'
+    } else if (quantidadecirculos == 'dos') {
+        sujeto1.style.left = '15%'
+        sujeto2.style.display = 'inherit'
+        sujeto2.style.left = '60%'
+        sujeto3.style.display = 'none'
+    } else if (quantidadecirculos == 'tres') {
+        sujeto1.style.left = '10%'
+        sujeto3.style.display = 'inherit'
+        sujeto2.style.left = '37%'
+        sujeto2.style.display = 'inherit'
+    }
+
+
+}
+
+var agora = new Date()
+var diaSem = agora.getDay() 
+var year = agora.getFullYear()
+var month = agora.getUTCMonth()
+var day = agora.getDate()
+var date = document.querySelector('.date'); 
+
+switch(diaSem) { 
+    case 0: 
+    date.innerHTML = `Domingo, ${day} de ${month} do ${year}`
+    break
+    case 1:
+        date.innerHTML =  `Segunda, ${day} de ${month} do ${year}`
+    break
+    case 2:
+        date.innerHTML =   `Terça, ${day} de ${month} do ${year}` 
+    break
+        case 3: 
+        date.innerHTML =  `Quarta, ${day} de ${month} do ${year}`  
+    break
+        case 4:
+        date.innerHTML =  `Quinta, ${day} de ${month} do ${year}`
+    break
+        case 5:
+        date.innerHTML =  `Sexta, ${day} de ${month} do ${year}`
+    break
+        case 6: 
+        date.innerHTML =  `Sábado, ${day} de ${month} do ${year}`
+}
+
+
+
+
+
+
+
+
+</script>
+
+
+
+
+
+    
+</body>
+</html>

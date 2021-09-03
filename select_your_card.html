@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>addEventListener e style.</title>
+
+    <style>
+
+
+#container {
+ display: flex;
+ justify-content: center;
+    
+}
+
+.cards  {
+
+    background: rgb(248, 162, 202);
+    height: 200px;
+    border-radius: 10px;
+    width: 200px;
+    margin: 60px 20px;
+    text-align: center;
+   font-size: 30pt;
+   cursor: pointer;
+   align-content: center;
+   font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+   color: rgb(90, 90, 247);
+   line-height: 190px;
+   
+}
+
+
+.cards_active  {
+    background: rgb(248, 52, 144);
+    color: yellow;
+
+}
+
+
+
+#container2 {
+    width: 100px;
+  margin: auto;
+}
+
+input {
+    margin: 10px;
+}
+
+#container_supremo {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+
+}
+
+.cards2 {
+    background: rgb(167, 167, 248); 
+    margin: 20px; 
+    height: 150px;
+    line-height: 150px;
+    padding: 20px;
+    font-weight: 900;
+    border-radius: 30px;
+    cursor: pointer;
+    box-shadow: 1px 1px 3px 1px rgba(0, 0, 0, 0.308);
+
+}
+
+.cards2:hover { 
+    box-shadow: 1px 1px 5px 2px rgba(0, 0, 0, 0.376);
+}
+
+.active {
+    background: rgb(104, 104, 246); 
+    color: white;
+}
+
+
+    </style>
+
+</head>
+
+
+
+
+
+
+<body>
+
+    
+<div id="container">
+
+    <div class="cards">
+
+        Carta 1
+    </div>
+
+
+    <div class="cards cards_active">
+
+       Carta 2 
+
+    </div>
+
+
+    <div class="cards">
+
+        Carta 3 
+
+    </div>
+</div>
+
+<div id="container2">
+
+<input type="button" value= 'appendChild com ' id="criador">
+<label> Tarefa
+<input type="text" id="escribe">  
+<input type='button' value= 'clique em mim' id='imprime'>
+</label>
+</div>
+
+<ul id="taskList">
+
+</ul>
+
+<div id="container_supremo">
+
+<div class="cards2">Quero ter informação</div>
+<div class="cards2 active">Quero ter informação</div>
+<div class="cards2">Quero ter informação</div>
+
+
+</div>
+
+
+
+<script>
+
+// cartas supremas 
+
+let supremo = document.querySelector('#container_supremo');
+let tarjetas = supremo.querySelectorAll('.cards2');
+tarjetas.forEach(tarjeta => tarjeta.addEventListener('click', seleccionar))
+
+function seleccionar(event){ 
+    tarjetas.forEach(tarjeta =>{
+        if(tarjeta.classList.contains('active')){
+            tarjeta.classList.remove('active')
+        }
+        event.target.classList.add('active')
+    })
+}
+
+
+//cartas 
+
+let options = document.querySelector('#container')
+let cards = options.querySelectorAll('.cards')
+
+cards.forEach(card => card.addEventListener('click', selectCard))
+
+ 
+
+function selectCard(event) {
+   cards.forEach(card => {
+       if (card.classList.contains('cards_active')) {
+           card.classList.remove('cards_active')
+       }
+
+     event.target.classList.add('cards_active') 
+   } )
+
+}
+
+//botão que cria
+
+var p = document.createElement('p');
+let button = document.querySelector('#criador')
+button.addEventListener('click', criar);
+
+ 
+// botão que imprime e input(texto) que imprime
+
+let button2 = document.querySelector('#imprime').addEventListener('click', imprimir);
+let area_texto = document.querySelector("#escribe").addEventListener('change')
+
+//Função para criar <p> com appendChild
+
+function criar(event) {
+
+   let hijo = document.querySelector('#container2').appendChild(p)
+    hijo.innerHTML = prompt('var p = createElement(p), p.innerHTML = string, document.querySelector(container).appendChild(p)')
+}
+
+//Função para imprimir console.log com segundo botão
+
+function imprimir() {
+    console.log('Ganaste');
+}
+
+
+
+</script>
+
+
+
+
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trabalhando com API</title>
+
+
+</head>
+
+
+
+<body>
+
+    <!DOCTYPE html>
+    <html lang="pt-BR">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Conhecendo o DOM</title>
+        <style>
+            .corVermelha {
+                color: red
+            }
+    
+            .escondido {
+                display: none;
+            }
+        </style>
+    </head>
+    <body>
+        <!-- <h1 class="corVermelha batata">Meu Título</h1>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint distinctio dolore quas beatae, blanditiis cupiditate adipisci quibusdam! Voluptas corporis aliquam nulla, soluta quas, molestiae illo reprehenderit ipsa sapiente error nisi!</p>
+        
+        <button id="btn-acao">Esconder o titulo</button> -->
+    
+        <label for="termo-de-busca">O que você está procurando?</label>
+        <input type="text" id="termo-de-busca">
+    
+        <button id="pesquisar">Pesquisar</button>
+    
+    
+        <div id="resultados"></div>
+    
+        <script>
+
+
+let btnBusca = document.querySelector('#pesquisar')
+let termoBusca = document.querySelector('#termo-de-busca')
+let areaResultados = document.querySelector('#resultados')
+
+
+btnBusca.addEventListener('click', function () {
+    areaResultados.innerHTML = "..."
+    pesquisarLivrosEExibir(termoBusca.value)
+})
+
+
+function pesquisarLivrosEExibir(termo) {
+    termo = encodeURIComponent(termo)
+
+    fetch('http://openlibrary.org/search.json?q=' + termo)
+    .then(resp => resp.json())
+    .then(dados => anexarResultados(dados.docs))
+}
+
+function anexarResultados(resultados) {
+
+    areaResultados.innerHTML = ""
+    resultados // docs
+    .forEach(resultado => {
+        let titulo = resultado.title
+        let p = document.createElement('p')
+        p.textContent = titulo
+
+        areaResultados.appendChild(p)
+    }) 
+}
+
+
+
+
+
+
+        </script>
+    </body>
+    </html>
+
+
+<script>
+
+const express = require('express')
+
+
+
+
+</script>
+    
+</body>
+</html>
