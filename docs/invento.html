@@ -8,19 +8,44 @@
 <style>
 
 
+.range {
+  padding: 30px;
+  background-color: rgba(0,0,0,0.8);
+  color: white;
+  font-size: 9px;
+  height: 240px;
+  text-align: center;
+}
+
+.range input {
+    padding: 0;
+    margin: 0;
+}
+
 body{
+   display: flex;
+   flex-wrap: wrap;
    margin: 0 auto;
-    display: flex; 
-    flex-wrap: wrap;
-    justify-content: space-around;
-    
+   align-items: center;
+   width: 90%;
+   justify-content: space-around;
+   
+
+   
+}
+
+.container_range {
+
+    display: flex;
+    flex-direction: column;
+ 
 }
 
 #root {
     background: #6401A7;
-    width: 400px;
+    width: 320px;
  margin: 20px 0px;
- height: 250px;
+ height: 210px;
     position: relative;
     overflow: hidden;
        
@@ -108,6 +133,16 @@ legend {
     font-size: 25pt;
 }
 
+.cor {
+
+    width: 90%;
+}
+
+/*INPUT RANGE BODY BACKGROUND STYLE*/
+
+
+
+
 
 </style>
 
@@ -115,8 +150,8 @@ legend {
 </head>
 <body>
 
-
-
+  
+    <div class="container_range">
 
 <div id="root">
 
@@ -126,12 +161,34 @@ legend {
  <div class="subject" id='sujeto3'></div>
 
 
- <input type="range">
+
 </div>
+
+<div class="range">
+
+<h1>Select input range background style </h1>
+<h2>Select your body background color</h2>
+
+<p>Red:</p>
+<input type="range" id="rangeRed" value= "0" min="0" max="255">
+
+<p>Green:</p>
+<input type="range" id="rangeGreen" value= "0" min="0" max="255">
+
+<p>Blue:</p>
+<input type="range"  id="rangeBlue" value="0" min="0" max="255">
+
+<br>
+
+<span id="colorOutput"></span>
+</div>
+
+</div>
+
 
  
 
-<form action="">
+<form action="" method="GET">
     <fieldset><legend>CSS3-no-box</legend>
 
         <div class="cor">
@@ -185,6 +242,37 @@ legend {
 
 
 <script> //plato fuerte
+
+document.getElementById('rangeRed').addEventListener('input', changeColor); 
+document.getElementById('rangeGreen').addEventListener('input', changeColor);
+document.getElementById('rangeBlue').addEventListener('input', changeColor);
+ 
+
+function changeColor() {
+
+//declara as variaveis do range 
+
+    let red = document.getElementById('rangeRed').value; 
+    let green = document.getElementById('rangeGreen').value;
+    let blue = document.getElementById('rangeBlue').value;
+
+    // color é a mistura das tres cores: red, green and blue. 
+    // color é a variavel que vai se reflexar no fundo 
+
+    let color= 'rgb (' + red + ', ' + green + ' , ' + blue + ')';
+    
+    document.body.style.backgroundColor = color;
+
+    document.getElementById('colorOutput').innerHTML = ': ' + color;
+
+
+
+}
+
+
+
+
+
 
 var form = document.querySelector('form') 
 
@@ -297,11 +385,6 @@ switch(diaSem) {
         case 6: 
         date.innerHTML =  `Sábado, ${day} de ${month} do ${year}`
 }
-
-
-
-
-
 
 
 

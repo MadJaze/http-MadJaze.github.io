@@ -4,9 +4,99 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--Poppins Google Fonts-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet">
     <title>Busca</title>
+<!--My CSS-->
+
+<style>
+
+body { 
+
+font-family: 'Poppins', sans-serif;
+margin: 0;
+padding: 0;
+display: flex;
+justify-content: space-around;
+align-items: center;
+min-height: 100vh;
+background: #222; 
+color: white;
+}
+
+
+#rangeValue {
+    
+position: absolute;
+top: 0;
+padding: 2px;
+right: -60px;
+width: 50px;
+box-sizing: border-box;
+color: #fff;
+text-align: center;
+
+ 
+}
+
+#rangeValue:before {
+    
+content: '';
+position: absolute;
+top: 50px;    
+transform: translateY(-50%) rotate(45deg);
+left: -5px;
+width: 10px;
+height: 10px;
+background: #fff;
+
+ 
+}
+
+.range {
+
+    width: 400px;
+    height: 2px;
+    background: #111;
+    -webkit-appearance:  none;
+    outline: none;
+    border-radius: 2px;
+}
+
+.range::-webkit-slider-thumb {
+
+    -webkit-appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #00bcda;
+
+
+}
+
+
+#oc {
+
+    position: relative;
+
+
+}
+
+
+</style>
+
 </head>
 <body>
+
+    <!--Input range CSS custom developing-->
+
+<div id="oc">
+    <span id="rangeValue">0</span>
+    <input type="range" class= 'range' name="" value= "0" min="0" max="1000" onmousemove="rangeSlider(this.value)" onchange="rangeSlider(this.value)">
+
+</div>
     
 
  <main class="container">  
@@ -21,10 +111,28 @@
 
 </main> 
 
+
 <div id="resultados"></div>
 
 
+
+
 <script src = "JS/busca.js"></script>
+
+<script>
+
+
+
+
+function rangeSlider(value) {
+
+    document.getElementById('rangeValue').innerHTML = value;
+
+}
+
+
+
+</script>
 
 
 
